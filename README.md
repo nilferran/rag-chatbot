@@ -33,65 +33,92 @@ RAG permite al chatbot responder basándose únicamente en tus documentos. En ve
 ## Instalación
 
 ### 1. Clona el repositorio
-   git clone https://github.com/nilferran/rag-chatbot.git
-   cd rag-chatbot
+
+```bash
+git clone https://github.com/nilferran/rag-chatbot.git
+cd rag-chatbot
+```
 
 ### 2. Crea el entorno virtual e instala dependencias Python
-   python -m venv venv
-   venv\Scripts\activate
-   python -m ensurepip
-   python -m pip install openai chromadb fastapi uvicorn python-dotenv pypdf
+
+```bash
+python -m venv venv
+venv\Scripts\activate
+python -m ensurepip
+python -m pip install openai chromadb fastapi uvicorn python-dotenv pypdf
+```
 
 ### 3. Crea el archivo .env en la raíz del proyecto
-   Crea un archivo llamado .env y escribe dentro:
-   OPENAI_API_KEY=tu_api_key_aqui
+
+Crea un archivo llamado `.env` y escribe dentro:
+
+```
+OPENAI_API_KEY=tu_api_key_aqui
+```
 
 ### 4. Instala las dependencias del frontend
-   cd frontend
-   npm install
-   cd ..
+
+```bash
+cd frontend
+npm install
+cd ..
+```
 
 ---
 
 ## Uso
 
 ### 1. Añade tus PDFs
-   Copia tus archivos PDF dentro de la carpeta docs/
+
+Copia tus archivos PDF dentro de la carpeta `docs/`
 
 ### 2. Indexa los documentos
-   Con el venv activado:
-   python -m app.ingest
+
+```bash
+python -m app.ingest
+```
 
 ### 3. Arranca el servidor backend
-   uvicorn app.main:app --reload
+
+```bash
+uvicorn app.main:app --reload
+```
 
 ### 4. Arranca el frontend (en otra terminal)
-   cd frontend
-   npm run dev
+
+```bash
+cd frontend
+npm run dev
+```
 
 ### 5. Abre el navegador en
-   http://localhost:5173
+
+```
+http://localhost:5173
+```
 
 ---
 
 ## Estructura del proyecto
 
-   rag-chatbot/
-   ├── app/
-   │   ├── __init__.py
-   │   ├── ingest.py       ← indexa los PDFs en ChromaDB
-   │   ├── query.py        ← busca y responde usando el LLM
-   │   └── main.py         ← servidor FastAPI
-   ├── frontend/
-   │   └── src/
-   │       ├── components/
-   │       │   ├── Chat.jsx
-   │       │   ├── Message.jsx
-   │       │   └── InputBar.jsx
-   │       └── App.jsx
-   ├── docs/               ← pon aquí tus PDFs
-   ├── .env                ← tu API key 
-   └── requirements.txt
+```
+rag-chatbot/
+├── app/
+│   ├── __init__.py
+│   ├── ingest.py       ← indexa los PDFs en ChromaDB
+│   ├── query.py        ← busca y responde usando el LLM
+│   └── main.py         ← servidor FastAPI
+├── frontend/
+│   └── src/
+│       ├── components/
+│       │   ├── Chat.jsx
+│       │   ├── Message.jsx
+│       │   └── InputBar.jsx
+│       └── App.jsx
+├── docs/               ← pon aquí tus PDFs
+├── .env                ← tu API key (no se sube a GitHub)
+└── requirements.txt
+```
 
 ---
 
@@ -103,6 +130,8 @@ RAG permite al chatbot responder basándose únicamente en tus documentos. En ve
 - React + Vite
 - react-markdown
 
+---
+---
 
 # 🤖 RAG Chatbot
 
@@ -139,65 +168,92 @@ RAG allows the chatbot to answer based only on your documents. Instead of answer
 ## Installation
 
 ### 1. Clone the repository
-   git clone https://github.com/nilferran/rag-chatbot.git
-   cd rag-chatbot
+
+```bash
+git clone https://github.com/nilferran/rag-chatbot.git
+cd rag-chatbot
+```
 
 ### 2. Create virtual environment and install Python dependencies
-   python -m venv venv
-   venv\Scripts\activate
-   python -m ensurepip
-   python -m pip install openai chromadb fastapi uvicorn python-dotenv pypdf
+
+```bash
+python -m venv venv
+venv\Scripts\activate
+python -m ensurepip
+python -m pip install openai chromadb fastapi uvicorn python-dotenv pypdf
+```
 
 ### 3. Create the .env file in the project root
-   Create a file called .env and write inside:
-   OPENAI_API_KEY=your_api_key_here
+
+Create a file called `.env` and write inside:
+
+```
+OPENAI_API_KEY=your_api_key_here
+```
 
 ### 4. Install frontend dependencies
-   cd frontend
-   npm install
-   cd ..
+
+```bash
+cd frontend
+npm install
+cd ..
+```
 
 ---
 
 ## Usage
 
 ### 1. Add your PDFs
-   Copy your PDF files inside the docs/ folder
+
+Copy your PDF files inside the `docs/` folder
 
 ### 2. Index the documents
-   With the venv activated:
-   python -m app.ingest
+
+```bash
+python -m app.ingest
+```
 
 ### 3. Start the backend server
-   uvicorn app.main:app --reload
+
+```bash
+uvicorn app.main:app --reload
+```
 
 ### 4. Start the frontend (in another terminal)
-   cd frontend
-   npm run dev
+
+```bash
+cd frontend
+npm run dev
+```
 
 ### 5. Open the browser at
-   http://localhost:5173
+
+```
+http://localhost:5173
+```
 
 ---
 
 ## Project structure
 
-   rag-chatbot/
-   ├── app/
-   │   ├── __init__.py
-   │   ├── ingest.py       ← indexes PDFs into ChromaDB
-   │   ├── query.py        ← searches and responds using LLM
-   │   └── main.py         ← FastAPI server
-   ├── frontend/
-   │   └── src/
-   │       ├── components/
-   │       │   ├── Chat.jsx
-   │       │   ├── Message.jsx
-   │       │   └── InputBar.jsx
-   │       └── App.jsx
-   ├── docs/               ← put your PDFs here
-   ├── .env                ← your API key (not uploaded to GitHub)
-   └── requirements.txt
+```
+rag-chatbot/
+├── app/
+│   ├── __init__.py
+│   ├── ingest.py       ← indexes PDFs into ChromaDB
+│   ├── query.py        ← searches and responds using LLM
+│   └── main.py         ← FastAPI server
+├── frontend/
+│   └── src/
+│       ├── components/
+│       │   ├── Chat.jsx
+│       │   ├── Message.jsx
+│       │   └── InputBar.jsx
+│       └── App.jsx
+├── docs/               ← put your PDFs here
+├── .env                ← your API key (not uploaded to GitHub)
+└── requirements.txt
+```
 
 ---
 
