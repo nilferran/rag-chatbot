@@ -10,7 +10,7 @@ chroma_client = chromadb.PersistentClient(path="chroma_db")
 collection = chroma_client.get_or_create_collection(name="documents")
 
 
-def query(question: str, n_results: int = 3) -> str:
+def query(question: str, history: list = [], n_results: int = 3) -> str:
     # Convertir la pregunta en vector
     response = client.embeddings.create(
         model="text-embedding-3-small",
@@ -26,28 +26,24 @@ def query(question: str, n_results: int = 3) -> str:
 
     context = "\n\n".join(results["documents"][0])
 
-    # Pasar el contexto al LLM
+    # Construir el historial de mensajes
+    messages = [
+        {
+            "role": "system",
+            "content": f"Eres un asistente útil. Responde solo basándote en el contexto proporcionado. Si la respuesta no está en el contexto, dilo claramente. Formatea siempre tus respuestas en Markdown: usa listas, negritas, títulos y párrafos cuando sea apropiado.\n\nContexto:\n{context}"
+        }
+    ]
+
+    # Añadir el historial anterior
+    for msg in history:
+        messages.append(msg)
+
+    # Añadir la pregunta actual
+    messages.append({"role": "user", "content": question})
+
     completion = client.chat.completions.create(
         model="gpt-4o-mini",
-        messages=[
-            {
-                "role": "system",
-                "content": "Eres un asistente útil. Responde solo basándote en el contexto proporcionado. Si la respuesta no está en el contexto, dilo claramente."
-            },
-            {
-                "role": "user",
-                "content": f"Contexto:\n{context}\n\nPregunta: {question}"
-            }
-        ]
+        messages=messages
     )
 
     return completion.choices[0].message.content
-
-
-if __name__ == "__main__":
-    while True:
-        question = input("\nPregunta (o 'salir'): ")
-        if question.lower() == "salir":
-            break
-        answer = query(question)
-        print(f"\nRespuesta: {answer}")

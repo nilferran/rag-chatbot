@@ -1,0 +1,28 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #212121;
+  color: #ececec;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.markdown ol, .markdown ul {
+  padding-left: 20px;
+  margin: 8px 0;
+}
+
+.markdown li {
+  margin-bottom: 4px;
+}
+
+.markdown p {
+  margin-bottom: 8px;
+}
+
+.markdown p:last-child {
+  margin-bottom: 0;
+}
